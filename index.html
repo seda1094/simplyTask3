@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+        }
+
+        
+
+        const personsArr = [new Person('Seda', 24),new Person('Tatev', 55),new Person('Hakob', 22),new Person('Andranik', 99)]
+
+        function checkAndRemoveAge(arr, prop) {
+            const limitedAge = arr.forEach((element, index) => {
+                if (element[prop] >= 40) {
+                    arr.splice(index, 1)
+                }
+            })
+        }
+
+        function addInstanceToArr(arr, Obj, ...rest) {
+            arr.push(new Obj(...rest))            
+        }
+
+        function getRndString(length) {
+            var result = ''
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+            var charactersLength = characters.length
+            for (var i = 0; i < length; i++) {
+                result += characters[Math.floor(Math.random() * charactersLength)]
+            }
+            return result
+        }
+
+        function getRndInt(min,max){
+            return Math.floor(Math.random() * (max - min) ) + min
+        }
+
+        timer = 1
+        setInterval(()=>{
+            timer++;
+            if(timer % 2 == 0){
+                addInstanceToArr(personsArr,Person,getRndString(5),getRndInt(1,99))
+            }
+            personsArr.forEach(
+                (value) => {
+                    value.age++
+                    checkAndRemoveAge(personsArr, "age")
+                }
+            )
+            console.table(personsArr)
+        },1000)
+
+    </script>
+</body>
+
+</html>
