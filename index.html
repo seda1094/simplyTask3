@@ -17,10 +17,10 @@
             }
         }
 
-        
-
         const personsArr = [new Person('Seda', 24),new Person('Tatev', 55),new Person('Hakob', 22),new Person('Andranik', 99)]
 
+
+        //function check >=40 aged person and delete
         function checkAndRemoveAge(arr, prop) {
             const limitedAge = arr.forEach((element, index) => {
                 if (element[prop] >= 40) {
@@ -29,10 +29,13 @@
             })
         }
 
+        //function created instance with some object with fields
         function addInstanceToArr(arr, Obj, ...rest) {
             arr.push(new Obj(...rest))            
         }
 
+        //function generate random string without numbers
+        //for person name
         function getRndString(length) {
             var result = ''
             var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -43,10 +46,13 @@
             return result
         }
 
+        //function generate rundom integers
+        //for person age
         function getRndInt(min,max){
             return Math.floor(Math.random() * (max - min) ) + min
         }
 
+        //in setInterval function is calling all functions for getting <40 people and create new
         timer = 1
         setInterval(()=>{
             timer++;
